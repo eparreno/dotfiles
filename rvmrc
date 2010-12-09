@@ -1,0 +1,2 @@
+export rvm_archflags="-arch x86_64"
+export rvm_gemset_create_on_use_flag=1

@@ -1,0 +1,28 @@
+# GLOBAL CONFIGURATION
+[merge]
+	tool = opendiff
+[core]
+	excludesfile = ~/.gitignore
+	editor = mate -w
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+  all = add --all
+  di = diff
+  dic = diff --cached
+  out = log origin..HEAD
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[apply]
+  whitespace = nowarn
+[user]
+	name = Your Name
+	email = user@domain.com
+[github]
+	user = github_user
+	token = github_token
