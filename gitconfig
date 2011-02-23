@@ -4,7 +4,7 @@
   excludesfile = /Users/emili/.gitignore
   autocrlf = input
   safecrlf = true
-  editor = mate -w
+  editor = mvim
   quotepath = false
 [alias]
   st = status
