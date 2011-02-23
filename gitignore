@@ -1,14 +1,1 @@
-.DS_Store
-.svn
-.hg
-capybara-*.html
-.rspec
-/.bundle
-/vendor/bundle
-/log/*
-/tmp/*
-/db/*.sqlite3
-/public/system/*
-/spec/tmp/*
-**.orig
-*~
+/Users/emili/.gitignore
