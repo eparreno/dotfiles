@@ -1,1 +1,6 @@
-/Users/emili/.gitignore
+.DS_Store
+._*
+.svn
+.hg
+.bundle
+.rspec
