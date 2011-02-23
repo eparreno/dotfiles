@@ -1,22 +1,22 @@
 ﻿[merge]
-	tool = opendiff
+  tool = opendiff
 [core]
-	excludesfile = /Users/emili/.gitignore
-	autocrlf = input
-	safecrlf = true
-	editor = mate -w
-	quotepath = false
+  excludesfile = /Users/emili/.gitignore
+  autocrlf = input
+  safecrlf = true
+  editor = mate -w
+  quotepath = false
 [alias]
-	st = status
-	ci = commit
-	co = checkout
+  st = status
+  ci = commit
+  co = checkout
   br = branch
   up = !git fetch origin && git rebase origin/master
   out = log origin..HEAD
 [color]
-	ui = auto
+  ui = auto
 [format]
   pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
 [user]
-	name = eparreno
-	email = emili@eparreno.com
+  name = eparreno
+  email = emili@eparreno.com
