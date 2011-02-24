@@ -4,7 +4,6 @@
 gem: --no-ri --no-rdoc
 :update_sources: true
 :sources: 
-- http://gemcutter.org
-- http://gems.github.com
+- http://rubygems.org
 :backtrace: false
 :bulk_threshold: 1000
