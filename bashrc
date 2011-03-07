@@ -23,13 +23,13 @@ PS1="\w\[\e[0;33;49m\]\$(parse_git_branch)\[\e[0;0m\]$ "
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias du='du -kh'     
+alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
 alias ll="ls -l"
 #rails aliases
 alias migrate="rake db:migrate db:test:prepare"
-alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
+alias remigrate="rake db:migrate db:migrate:redo db:test:prepare"
 alias rspec="bundle exec rspec"
 alias bi="bundle install"
 alias bu="bundle update"
