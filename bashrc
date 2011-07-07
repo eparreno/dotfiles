@@ -27,14 +27,16 @@ alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
 alias ll="ls -l"
+
 #rails aliases
 alias migrate="rake db:migrate db:test:prepare"
 alias remigrate="rake db:migrate db:migrate:redo db:test:prepare"
-alias rspec="bundle exec rspec"
+alias rspec="time bundle exec rspec"
 alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
-#misc
+
+#git
 alias g="git"
 alias gaa='git add --all'
 
@@ -43,4 +45,7 @@ export VIMRC="~/.vimrc"
 export PATH="/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 export CLICOLOR=1
 export TERM=xterm-color
-export EDITOR=vim
+export EDITOR='mate -w'
+export LANG='es_ES.UTF-8'
+export LC_CTYPE='es_ES.UTF-8'
+export LC_ALL='es_ES.UTF-8'

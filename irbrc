@@ -1,25 +1,51 @@
-﻿# Autocomplete
+# coding: utf-8
+#!/usr/bin/ruby
+#
+# Author: Emili Parreno
+# http://github.com/eparreno/dotfiles
+
+ARGV.concat ["--readline", "--prompt-mode", "simple"]
+
+require 'rubygems'
 require 'irb/completion'
-
-# Prompt behavior
-ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
-
-# History
 require 'irb/ext/save-history'
+require 'pp'
+require 'wirble'
+Wirble.init
+Wirble.colorize
+
+# history
 IRB.conf[:SAVE_HISTORY] = 100
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
-
-
-# Disable readline. Useful for latin users
-IRB.conf[:USE_READLINE]=false
+IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb_history')
 
 # Auto-indentation
 IRB.conf[:AUTO_INDENT]=true
 
-# copy a string to the clipboard
-def pbcopy(string)
-  `echo "#{string}" | pbcopy`
-  string
+# Disable readline. Useful for latin users
+IRB.conf[:USE_READLINE]=true
+
+# list object methods
+def local_methods(obj=self)
+  (obj.methods - obj.class.superclass.instance_methods).sort
 end
 
+# reload this .irbrc
+def reload!
+  load __FILE__
+end
 
+def ls
+  %x{ls}.split("\n")
+end
+
+def cd(dir)
+  Dir.chdir(dir)
+  Dir.pwd
+end
+
+def pwd
+  Dir.pwd
+end
+
+alias p pp
+alias quit exit
