@@ -38,13 +38,13 @@ fi
 
 # colors
 Black='\e[0;30m'
-Red='\e[0;31m'
-Green='\e[0;32m'
-Yellow='\e[0;33m'
-Blue='\e[0;34m'
-Purple='\e[0;35m'
-Cyan='\e[0;36m'
-White='\e[0;37m'
+Red='\e[1;31m'
+Green='\e[1;32m'
+Yellow='\e[1;33m'
+Blue='\e[1;34m'
+Purple='\e[1;35m'
+Cyan='\e[1;36m'
+White='\e[1;37m'
 
 # set the PS1 variable (prompt)
 #export PS1="\w\[\e[0;33;49m\]\$(parse_git_branch)\[\e[0;0m\]$ "
@@ -71,7 +71,12 @@ alias be="bundle exec"
 
 # git aliases
 alias g="git"
-alias gaa='git add --all'
+alias gl="git log"
+alias gaa="git add --all"
+alias gci="git ci -m"
+alias gst="git st"
+alias gpsm="git push staging master"
+alias gppm="git push production master"
 
 # environment variables 
 export VIMRC="~/.vimrc"
