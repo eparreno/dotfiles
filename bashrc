@@ -3,6 +3,11 @@ unset MAILCHECK
 # default umask
 umask 0022
 
+# config colors
+export TERM=xterm-color
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
 show_rvm_version() {
   local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
   [ "$gemset" != "" ] && gemset="@$gemset"
@@ -18,8 +23,8 @@ show_git_dirty() {
 }
 
 show_git_branch() {
-    _branch="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
-    test -n "$_branch" && echo -e " $_branch"
+  _branch="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
+  test -n "$_branch" && echo -e " $_branch"
 }
 
 show_dev_info() {
@@ -27,8 +32,8 @@ show_dev_info() {
 }
 
 # bash_completion
-if [[ -s "/usr/local/Cellar/git/1.7.3.2/etc/bash_completion.d/git-completion.bash" ]]; then
-source "/usr/local/Cellar/git/1.7.3.2/etc/bash_completion.d/git-completion.bash"
+if [[ -s "/usr/local/Cellar/git/1.7.6/etc/bash_completion.d/git-completion.bash" ]]; then
+  source "/usr/local/Cellar/git/1.7.6/etc/bash_completion.d/git-completion.bash"
 fi
 
 # rvm
@@ -38,19 +43,20 @@ fi
 
 # colors
 Black='\e[0;30m'
-Red='\e[1;31m'
-Green='\e[1;32m'
-Yellow='\e[1;33m'
-Blue='\e[1;34m'
-Purple='\e[1;35m'
-Cyan='\e[1;36m'
-White='\e[1;37m'
+Red='\e[0;31m'
+Green='\e[0;32m'
+Yellow='\e[0;33m'
+Blue='\e[0;34m'
+Purple='\e[0;35m'
+Cyan='\e[0;36m'
+White='\e[0;37m'
 
 # set the PS1 variable (prompt)
 #export PS1="\w\[\e[0;33;49m\]\$(parse_git_branch)\[\e[0;0m\]$ "
 #export PS1="\e[0;33m\w\$(show_git_branch)\[\e[0;0m\]$ "
 #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\] $(show_git_branch)$(show_git_dirty)\[\033[01;34m\] \$\[\033[00m\] '
 PS1="\[$Cyan\]\w \[$Yellow\]\$(show_dev_info)\[$White\]$ "
+
 
 # system aliases
 alias rm='rm -i'
@@ -60,6 +66,7 @@ alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
 alias ll="ls -l"
+alias la="ls -la"
 
 # rails aliases
 alias migrate="rake db:migrate db:test:prepare"
@@ -77,6 +84,11 @@ alias gci="git ci -m"
 alias gst="git st"
 alias gpsm="git push staging master"
 alias gppm="git push production master"
+alias gphm="git push heroku master"
+
+# Task Manager
+
+alias tm="~/Projects/todo/todo.rb"
 
 # environment variables 
 export VIMRC="~/.vimrc"
@@ -89,4 +101,3 @@ export LC_ALL="es_ES.UTF-8"
 
 # iterm2 tab title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
-
