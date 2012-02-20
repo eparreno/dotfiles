@@ -4,7 +4,6 @@ unset MAILCHECK
 umask 0022
 
 # config colors
-export TERM=xterm-color
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
@@ -57,7 +56,6 @@ White='\e[0;37m'
 #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\] $(show_git_branch)$(show_git_dirty)\[\033[01;34m\] \$\[\033[00m\] '
 PS1="\[$Cyan\]\w \[$Yellow\]\$(show_dev_info)\[$White\]$ "
 
-
 # system aliases
 alias rm='rm -i'
 alias cp='cp -i'
@@ -67,10 +65,13 @@ alias df='df -kTh'
 alias tlf="tail -f"
 alias ll="ls -l"
 alias la="ls -la"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # rails aliases
-alias migrate="rake db:migrate db:test:prepare"
-alias remigrate="rake db:migrate db:migrate:redo db:test:prepare"
+alias migrate="bundle exec rake db:migrate db:test:prepare"
+alias remigrate="bundle exec rake db:migrate db:migrate:redo db:test:prepare"
 alias rspec="time bundle exec rspec"
 alias bi="bundle install"
 alias bu="bundle update"
@@ -85,19 +86,15 @@ alias gst="git st"
 alias gpsm="git push staging master"
 alias gppm="git push production master"
 alias gphm="git push heroku master"
+alias gpom="git push origin master"
 
-# Task Manager
-
-alias tm="~/Projects/todo/todo.rb"
-
-# environment variables 
+# environment variables
 export VIMRC="~/.vimrc"
 export CLICOLOR=1
 export TERM=xterm-color
 export EDITOR="vim"
-export LANG="es_ES.UTF-8"
-export LC_CTYPE="es_ES.UTF-8"
-export LC_ALL="es_ES.UTF-8"
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # iterm2 tab title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
