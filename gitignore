@@ -5,6 +5,7 @@
 .hg
 .bundle
 .rvmrc
+.rbenv-version
 *~
 *.cache
 *.log
@@ -23,7 +24,6 @@ coverage
 coverage.data
 config/database.yml
 config/deploy.rb
-db/schema.rb
 db/*.sqlite3
 log/*.log
 reports

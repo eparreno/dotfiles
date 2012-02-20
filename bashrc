@@ -7,15 +7,6 @@ umask 0022
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-show_rvm_version() {
-  local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
-  [ "$gemset" != "" ] && gemset="@$gemset"
-  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
-  [ "$version" != "" ] && version="$version"
-  local full="$version$gemset"
-  [ "$full" != "" ] && echo "$full"
-}
-
 show_git_dirty() {
   local git_status=$(git status 2>&1 | tail -n1)
   [[ $git_status != "fatal: Not a git repository (or any of the parent directories): .git" ]] && [[ $git_status != "nothing to commit (working directory clean)" ]] && echo "*"
@@ -26,18 +17,20 @@ show_git_branch() {
   test -n "$_branch" && echo -e " $_branch"
 }
 
+# prompt with ruby version
+ruby_version()
+{
+  rbenv_ruby_version=`rbenv version | sed -e 's/ .*//'`
+  printf $rbenv_ruby_version
+}
+
 show_dev_info() {
-  echo "($(show_rvm_version)$(show_git_branch)$(show_git_dirty))"
+  echo "($(ruby_version)$(show_git_branch)$(show_git_dirty))"
 }
 
 # bash_completion
 if [[ -s "/usr/local/Cellar/git/1.7.6/etc/bash_completion.d/git-completion.bash" ]]; then
   source "/usr/local/Cellar/git/1.7.6/etc/bash_completion.d/git-completion.bash"
-fi
-
-# rvm
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  source "$HOME/.rvm/scripts/rvm"
 fi
 
 # colors
@@ -98,3 +91,8 @@ export LANG=en_US.UTF-8
 
 # iterm2 tab title
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+source ~/.rbenv/completions/rbenv.bash
