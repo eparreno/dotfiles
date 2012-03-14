@@ -12,13 +12,12 @@
   co = checkout
   br = branch
   up = !git fetch origin && git rebase origin/master
-  out = log origin..HEAD
 [color]
   ui = auto
 [format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+  pretty = "%C(yellow)%h%Creset %Cgreen[%ai]%Creset [%an] %s"
 [user]
-  name =Emili Parreno
+  name = Emili Parreno
   email = emili@eparreno.com
 [github]
   user = eparreno
