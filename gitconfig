@@ -11,7 +11,6 @@
   ci = commit
   co = checkout
   br = branch
-  up = !git fetch origin && git rebase origin/master
 [color]
   ui = auto
 [format]
@@ -23,3 +22,5 @@
   user = eparreno
 [heroku]
   account = eparreno
+[branch]
+  autosetuprebase = remote
