@@ -20,3 +20,6 @@ read -p "This may overwrite existing files in your home directory. Are you sure?
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   /usr/bin/env ruby install.rb
 fi
+
+popd
+source "~/.bashrc"
