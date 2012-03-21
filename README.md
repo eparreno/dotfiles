@@ -4,7 +4,7 @@ Use at your own risk :)
 
 ## Automatic Install
 
-  bash < <( curl http://github.com/eparreno/dotfiles/raw/master/install.sh )
+  bash < <( curl https://raw.github.com/eparreno/dotfiles/master/install.sh )
 
 ## Manual Install
 
