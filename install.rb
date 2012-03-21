@@ -8,6 +8,6 @@ Dir['*'].each do |file|
   next if file =~ /install/
   target = File.join(home, ".#{file}")
   unless File.exist? target
-    system %[ln -vsf #{File.join(dotfiles_dir, file)} #{target}]
+    system %[ln -vsf #{File.expand_path file}  #{target}]
   end
 end
