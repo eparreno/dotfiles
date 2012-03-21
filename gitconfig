@@ -24,3 +24,5 @@
   account = eparreno
 [branch]
   autosetuprebase = remote
+[push]
+  default = tracking

@@ -56,11 +56,13 @@ alias mv='mv -i'
 alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
-alias ll="ls -l"
+alias l="ls -l"
 alias la="ls -la"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias spec='./script/spec'
+alias t='tmux'
 
 # rails aliases
 alias migrate="bundle exec rake db:migrate db:test:prepare"
@@ -73,13 +75,14 @@ alias be="bundle exec"
 # git aliases
 alias g="git"
 alias gl="git log"
+alias glb="git log --oneline --decorate"
 alias gaa="git add --all"
 alias gci="git ci -m"
-alias gst="git st"
+alias gst="git st -sb"
+alias gpom="git push origin master"
+alias gphm="git push heroku master"
 alias gpsm="git push staging master"
 alias gppm="git push production master"
-alias gphm="git push heroku master"
-alias gpom="git push origin master"
 
 # environment variables
 export VIMRC="~/.vimrc"
@@ -95,4 +98,3 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-source ~/.rbenv/completions/rbenv.bash
