@@ -5,6 +5,14 @@
 # Usage:
 #  bash < <( curl https://raw.github.com/eparreno/dotfiles/master/install.sh )
 
+read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) "
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Installing...."
+else
+    echo 'Aborted.'
+    exit 1
+fi
+
 DOTFILE_PATH="${DOTFILE_PATH:-$HOME/.dotfiles}"
 
 if [[ -d "$HOME/.dotfiles" ]]; then
@@ -15,10 +23,8 @@ else
     pushd $DOTFILE_PATH
 fi
 
-read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) "
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  /usr/bin/env ruby install.rb
-fi
+/usr/bin/env ruby install.rb
 
 popd
 source "$HOME/.bashrc"
+echo "Done!"
