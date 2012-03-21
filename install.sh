@@ -16,10 +16,9 @@ else
 fi
 
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) "
-
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   /usr/bin/env ruby install.rb
 fi
 
 popd
-source "~/.bashrc"
+source "$HOME/.bashrc"
