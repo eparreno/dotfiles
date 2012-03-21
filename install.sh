@@ -3,7 +3,7 @@
 # A script to install these dotfiles onto a new machine.
 #
 # Usage:
-#  bash < <( curl http://github.com/eparreno/dotfiles/raw/master/install.sh )
+#  bash < <( curl https://raw.github.com/eparreno/dotfiles/master/install.sh )
 
 DOTFILE_PATH="${DOTFILE_PATH:-$HOME/.dotfiles}"
 
