@@ -48,7 +48,7 @@ White='\e[0;37m'
 #export PS1="\w\[\e[0;33;49m\]\$(parse_git_branch)\[\e[0;0m\]$ "
 #export PS1="\e[0;33m\w\$(show_git_branch)\[\e[0;0m\]$ "
 #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\] $(show_git_branch)$(show_git_dirty)\[\033[01;34m\] \$\[\033[00m\] '
-PS1="\[$Yellow\]\u@\h \[$Cyan\]\w \[$Green\]\$(show_dev_info)\[$White\] $ "
+PS1="\[$Yellow\]\u@\h \[$Cyan\]\w \[$Green\]\$(show_dev_info)\n\[$Red\]➔\[$White\] "
 
 # system aliases
 alias rm='rm -i'
