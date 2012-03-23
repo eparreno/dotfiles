@@ -9,7 +9,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 show_git_dirty() {
   local git_status=$(git status 2>&1 | tail -n1)
-  [[ $git_status != "fatal: Not a git repository (or any of the parent directories): .git" ]] && [[ $git_status != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $git_status != "fatal: Not a git repository (or any of the parent directories): .git" ]] && [[ $git_status != "nothing to commit (working directory clean)" ]] && echo "!"
 }
 
 show_git_branch() {
@@ -48,7 +48,7 @@ White='\e[0;37m'
 #export PS1="\w\[\e[0;33;49m\]\$(parse_git_branch)\[\e[0;0m\]$ "
 #export PS1="\e[0;33m\w\$(show_git_branch)\[\e[0;0m\]$ "
 #export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\] $(show_git_branch)$(show_git_dirty)\[\033[01;34m\] \$\[\033[00m\] '
-PS1="\[$Yellow\]\u@\h \[$Cyan\]\w \[$Green\]\$(show_dev_info)\n\[$Red\]➔\[$White\] "
+PS1="\[$Yellow\]\u@\h \[$Cyan\]\w \[$Green\]\$(show_dev_info)\n\[$White\]➔\[$White\] "
 
 # system aliases
 alias rm='rm -i'
@@ -88,7 +88,7 @@ alias gppm="git push production master"
 # environment variables
 export VIMRC="~/.vimrc"
 export CLICOLOR=1
-export TERM=xterm-color
+export TERM=xterm-256color
 export EDITOR="vim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

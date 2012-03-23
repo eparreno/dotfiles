@@ -1,0 +1,17 @@
+--sort-files
+--color
+--context=1
+--follow
+--group
+--all
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=logs
+--ignore-dir=tmp
+--ignore-dir=docs
+--ignore-dir=doc
+--ignore-dir=.git
+--type-set=DUMB=TAGS
+--noDUMB
+--type-add
+ruby=.rake
