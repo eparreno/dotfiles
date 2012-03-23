@@ -111,4 +111,7 @@ if [[ -s "$HOME/.rbenv" ]]; then
   eval "$(rbenv init -)"
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+# load rvm
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+    source "$HOME/.rvm/scripts/rvm"
+fi
