@@ -11,10 +11,12 @@
 *.log
 *.pid
 *.swp
+.session.vim
+.tags
 tmp/**/*
 Capfile
-doc/api
-doc/app
+doc/
+!doc/README_FOR_APP
 public/packages
 public/assets/**/*
 public/uploads
