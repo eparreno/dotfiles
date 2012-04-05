@@ -3,10 +3,6 @@ unset MAILCHECK
 # default umask
 umask 0022
 
-# config colors
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
-
 show_git_dirty() {
   local git_status=$(git status 2>&1 | tail -n1)
   [[ $git_status != "fatal: Not a git repository (or any of the parent directories): .git" ]] && [[ $git_status != "nothing to commit (working directory clean)" ]] && echo "!"
@@ -63,7 +59,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias spec='./script/spec'
-alias t='tmux'
+alias t="tmux"
 
 # rails aliases
 alias migrate="bundle exec rake db:migrate db:test:prepare"
@@ -86,9 +82,10 @@ alias gpsm="git push staging master"
 alias gppm="git push production master"
 
 # environment variables
+# export CLICOLOR=1
+# export LSCOLORS=ExFxCxDxBxegedabagacad
+# export TERM=xterm-256color
 export VIMRC="~/.vimrc"
-export CLICOLOR=1
-export TERM=xterm-256color
 export EDITOR="vim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

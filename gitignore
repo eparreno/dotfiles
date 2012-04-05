@@ -13,6 +13,7 @@
 *.swp
 .session.vim
 .tags
+.yardoc
 tmp/**/*
 Capfile
 doc/
