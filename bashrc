@@ -53,13 +53,17 @@ alias mv='mv -i'
 alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
-alias l="ls -l"
 alias la="ls -la"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias spec='./script/spec'
 alias t="tmux"
+if [[ $OSTYPE == linux-gnu ]]; then
+  alias l="ls -l --color"
+else
+  alias l="ls -l"
+fi
 
 # rails aliases
 alias migrate="bundle exec rake db:migrate db:test:prepare"
@@ -82,8 +86,8 @@ alias gpsm="git push staging master"
 alias gppm="git push production master"
 
 # environment variables
-# export CLICOLOR=1
-# export LSCOLORS=ExFxCxDxBxegedabagacad
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
 # export TERM=xterm-256color
 export VIMRC="~/.vimrc"
 export EDITOR="vim"
