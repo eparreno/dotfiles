@@ -53,7 +53,6 @@ alias mv='mv -i'
 alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
-alias la="ls -la"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -61,8 +60,10 @@ alias spec='./script/spec'
 alias t="tmux"
 if [[ $OSTYPE == linux-gnu ]]; then
   alias l="ls -l --color"
+  alias la="ls -la --color"
 else
   alias l="ls -l"
+  alias la="ls -la"
 fi
 
 # rails aliases
