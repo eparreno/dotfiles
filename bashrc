@@ -14,18 +14,18 @@ show_git_branch() {
 }
 
 # prompt with ruby version
-ruby_version()
+show_ruby_version()
 {
   echo "$(ruby -e 'print RUBY_VERSION')"
 }
 
 show_dev_info() {
-  echo "($(ruby_version)$(show_git_branch)$(show_git_dirty))"
+  echo "($(show_ruby_version)$(show_git_branch)$(show_git_dirty))"
 }
 
 # bash_completion
-if [[ -s "/usr/local/Cellar/git/1.7.6/etc/bash_completion.d/git-completion.bash" ]]; then
-  source "/usr/local/Cellar/git/1.7.6/etc/bash_completion.d/git-completion.bash"
+if [[ -s "/usr/local/etc/bash_completion.d/git-completion.bash" ]]; then
+  source "/usr/local/etc/bash_completion.d/git-completion.bash"
 fi
 
 # colors
