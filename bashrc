@@ -94,6 +94,8 @@ export VIMRC="~/.vimrc"
 export EDITOR="vim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+# needed in Mountain Lion for Ruby 1.8.7 + rbenv
+export CPPFLAGS=-I/opt/X11/include
 
 # xterm tab title
 # export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
