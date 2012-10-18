@@ -102,10 +102,10 @@ export CPPFLAGS=-I/opt/X11/include
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-  PS1="\[\e]0;@\h: \w\a\]$PS1"
+  xterm*|rxvt*)
+    PS1="\[\e]0;@\h: \w\a\]$PS1"
   ;;
-*)
+  *)
   ;;
 esac
 
