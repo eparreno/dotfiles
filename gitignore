@@ -5,6 +5,7 @@
 .hg
 .bundle
 .rvmrc
+.tmuxrc
 .rbenv-version
 *~
 *.cache
