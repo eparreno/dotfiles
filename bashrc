@@ -5,7 +5,8 @@ umask 0022
 
 show_git_dirty() {
   local git_status=$(git status 2>&1 | tail -n1)
-  [[ $git_status =~ ^/"fatal: Not a git repository"/ ]] && [[ $git_status != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $git_status != "nothing to commit (working directory clean)" ]] && \
+  [[ ! $git_status =~ ^"fatal: Not a git repository".*$ ]] && echo " ϟ"
 }
 
 show_git_branch() {
