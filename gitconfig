@@ -20,8 +20,6 @@
   email = emili@eparreno.com
 [github]
   user = eparreno
-[heroku]
-  account = eparreno
 [branch]
   autosetuprebase = remote
 [push]
