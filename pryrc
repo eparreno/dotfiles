@@ -2,7 +2,7 @@
 begin
   require File.join(Dir.getwd, 'config', 'environment.rb')
 rescue LoadError
-  puts "No Rails app"
+  puts "No Rails app detected"
 end
 
 if defined?(Rails) && Rails.env
