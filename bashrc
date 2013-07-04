@@ -120,3 +120,5 @@ fi
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
     source "$HOME/.rvm/scripts/rvm"
 fi
+
+export PATH="/usr/local/share/npm/bin:$PATH"
