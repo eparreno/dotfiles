@@ -9,7 +9,7 @@ if defined?(Rails) && Rails.env
   # load rails console helpers
   # you'll be able to use reload! ;)
   require "rails/console/app"
-  extend Rails::ConsoleMethods
+  extend Rails::ConsoleMethods unless Rails.version =~ /3.0/
 
   # Show SQL info
   if defined?(ActiveRecord)
@@ -32,8 +32,8 @@ prompt = "\e[1;30m"
 prompt << "#{RUBY_VERSION}"
 
 Pry.prompt = [
-              proc { |obj, nest_level| "#{prompt} (#{obj}):#{nest_level} > \e[0m" },
-              proc { |obj, nest_level| "#{prompt} (#{obj}):#{nest_level} * \e[0m" }
+              proc { |obj, level, _| "#{prompt} (#{obj}):#{level} > \e[0m" },
+              proc { |obj, level, _| "#{prompt} (#{obj}):#{level} * \e[0m" }
              ]
 
 # vim FTW
@@ -43,5 +43,12 @@ Pry.config.editor = "vim"
 Pry.config.exception_handler = proc do |output, exception, _|
   output.puts "\e[31m#{exception.class}: #{exception.message}"
   output.puts "from #{exception.backtrace.first}\e[0m"
+end
+
+# Return only the methods not present on basic objects
+class Object
+  def interesting_methods
+    (self.methods - Object.instance_methods).sort
+  end
 end
 
