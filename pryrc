@@ -9,7 +9,7 @@ if defined?(Rails) && Rails.env
   # load rails console helpers
   # you'll be able to use reload! ;)
   require "rails/console/app"
-  extend Rails::ConsoleMethods unless Rails.version =~ /3.0/
+  # extend Rails::ConsoleMethods unless Rails.version > '3.0'
 
   # Show SQL info
   if defined?(ActiveRecord)

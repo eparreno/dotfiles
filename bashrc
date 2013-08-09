@@ -48,6 +48,14 @@ White='\e[0;37m'
 PS1="\[$Yellow\]\u@\h \[$Cyan\]\w \[$Green\]\$(show_dev_info)\n\[$White\]➔\[$White\] "
 
 # system aliases
+_myos="$(uname)"
+if [[ $_myos == linux ]]; then
+  alias l="ls -l --color"
+  alias la="ls -la --color"
+else
+  alias l="ls -l"
+  alias la="ls -la"
+fi
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -59,13 +67,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias spec='./script/spec'
 alias t="tmux"
-if [[ $OSTYPE == linux-gnu ]]; then
-  alias l="ls -l --color"
-  alias la="ls -la --color"
-else
-  alias l="ls -l"
-  alias la="ls -la"
-fi
 
 # rails aliases
 alias migrate="bundle exec rake db:migrate db:test:prepare"
