@@ -2,8 +2,6 @@ unset MAILCHECK
 
 umask 0022
 
-HISTFILE=~/.zsh_history
-
 autoload -U compinit
 compinit -i
 autoload colors; colors;

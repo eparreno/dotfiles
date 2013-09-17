@@ -1,3 +1,8 @@
+# fix Ctrl-s issue on iTerm
+stty -ixoff
+stty stop undef
+stty start undef
+
 if [ -n "$ZSH_VERSION" ]; then
   # Select "emacs" keymap.
   # This enables:
@@ -12,9 +17,4 @@ if [ -n "$ZSH_VERSION" ]; then
   #
   # See `man zshzle`
   bindkey -e
-
-  # C-x C-e to edit command-line in EDITOR
-  autoload -U edit-command-line
-  zle -N edit-command-line
-  bindkey '\C-x\C-e' edit-command-line
 fi
