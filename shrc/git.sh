@@ -1,7 +1,7 @@
 alias g="git"
 alias gl="git log"
 alias gd="git diff"
-alias gg="git grep -n"
+alias gg="git g"
 alias glb="git log --oneline --decorate"
 alias gaa="git add --all"
 alias gci="git ci -m"

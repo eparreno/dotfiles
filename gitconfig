@@ -11,6 +11,7 @@
   ci = commit
   co = checkout
   br = branch
+	g = grep --break --heading --line-number
 [color]
   ui = auto
 [format]
@@ -24,3 +25,6 @@
   autosetuprebase = remote
 [push]
   default = tracking
+[grep]
+	extendRegexp = true
+	lineNumber = true
