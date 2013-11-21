@@ -9,6 +9,5 @@ elif [[ -n $ZSH_VERSION ]]; then
   HISTSIZE=5000
   SAVEHIST=5000
   HISTDUP=erase
-  setopt  share_history       # Share history across terminals
   setopt  inc_append_history  # Immediately append to the history file
 fi
