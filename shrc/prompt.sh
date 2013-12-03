@@ -42,5 +42,5 @@ elif [[ -n $ZSH_VERSION ]]; then
   local ruby='%{$fg[yellow]%}$(ruby_version)%{$reset_color%}'
   local git='%{$fg[yellow]%}$(show_git_branch)%{$fg[red]%}$(show_git_status)%{$reset_color%}'
 
-  PROMPT="[$user@$host] $dir $ruby $git%% "
+  PROMPT=$(print "[$user@$host] $dir $ruby $git\n%% ")
 fi
