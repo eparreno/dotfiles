@@ -28,7 +28,6 @@ Pry.config.ls.private_method_color = :bright_black
 
 # Prompt
 prompt = "\e[1;30m"
-#prompt << "#{Rails.version}@" if defined?(Rails)
 prompt << "#{RUBY_VERSION}"
 
 Pry.prompt = [
