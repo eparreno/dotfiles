@@ -1,29 +1,30 @@
 ﻿[merge]
-  tool = opendiff
+  tool = vimdiff
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
   safecrlf = false
   editor = vim
   quotepath = false
-[alias]
-  st = status
-  ci = commit
-  co = checkout
-  br = branch
+  whitespace = trailing-space,space-before-tab
 [color]
   ui = auto
 [format]
-  pretty = "%C(yellow)%h%Creset %Cgreen[%ai]%Creset [%an] %s"
+  ; pretty = "%C(yellow)%h%Creset %Cgreen[%ai]%Creset [%an] %s"
 [user]
   name = Emili Parreno
   email = emili@eparreno.com
 [github]
   user = eparreno
 [branch]
-  autosetuprebase = remote
+  autosetupmerge = true
 [push]
   default = tracking
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
