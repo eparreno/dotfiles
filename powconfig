@@ -1,0 +1,1 @@
+export POW_DOMAINS=dev,test,dev.com,dev.io
