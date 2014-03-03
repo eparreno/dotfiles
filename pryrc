@@ -6,10 +6,13 @@ rescue LoadError
 end
 
 if defined?(Rails) && Rails.env
-  # load rails console helpers
-  # you'll be able to use reload! ;)
-  require "rails/console/app"
-  # extend Rails::ConsoleMethods unless Rails.version > '3.0'
+  if Rails.version.first == '2'
+    require 'console_app'
+    require 'console_with_helpers'
+  else
+    require "rails/console/app"
+    require 'rails/console/helpers'
+  end
 
   # Show SQL info
   if defined?(ActiveRecord)
