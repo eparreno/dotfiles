@@ -1,7 +1,4 @@
-# fix Ctrl-s issue on iTerm
-stty -ixoff
-stty stop undef
-stty start undef
+stty -ixon -ixoff 2>/dev/null # no flow control. Let me use Ctrl+s in Vim
 
 if [ -n "$ZSH_VERSION" ]; then
   # Select "emacs" keymap.
