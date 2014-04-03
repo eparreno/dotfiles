@@ -7,6 +7,7 @@
 .rvmrc
 .tmuxrc
 .rbenv-version
+.rbenv-vars
 .ruby-version
 *~
 *.cache
@@ -33,4 +34,4 @@ log/*.log
 reports
 webrat-*
 vendor/ruby/**/*
-
+vendor/plugins/rails-dev-boost/
