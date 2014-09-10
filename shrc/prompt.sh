@@ -1,12 +1,29 @@
-show_git_branch() {
+git_show_branch() {
   local ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
     echo -n "${ref#refs/heads/} "
   fi
 }
 
-show_git_status() {
+git_show_status() {
   [[ -n $(git status --porcelain 2> /dev/null) ]] && echo -n "✘ "
+}
+
+git_prompt ()
+{
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return 0
+  fi
+
+  git_branch=$(git_show_branch)
+
+  if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
+    git_color="%{$fg[red]%}"
+  else
+    git_color="%{$fg[green]%}"
+  fi
+
+  echo "$git_color$git_branch$reset_color"
 }
 
 ruby_version() {
@@ -29,7 +46,7 @@ if [[ -n $BASH ]]; then
     local host="\[$white\]\h\[$white\]"
     local dir="\[$cyan\]\w\[$white\]"
     local ruby="\[$yellow\]\$(ruby_version)\[$white\]"
-    local git="\[$yellow\]\$(show_git_branch)\[$red\]\$(show_git_status)\[$white\]"
+    local git="\[$yellow\]\$(git_show_branch)\[$red\]\$(git_show_status)\[$white\]"
 
     echo "[$user@$host] $dir $ruby $git$ "
   }
@@ -40,7 +57,7 @@ elif [[ -n $ZSH_VERSION ]]; then
   local host='%{$fg[white]%}%1m%{$reset_color%}'
   local dir='%{$fg[cyan]%}%~%{$reset_color%}'
   local ruby='%{$fg[yellow]%}$(ruby_version)%{$reset_color%}'
-  local git='%{$fg[yellow]%}$(show_git_branch)%{$fg[red]%}$(show_git_status)%{$reset_color%}'
+  local git='$(git_prompt)%{$reset_color%}'
 
   PROMPT=$(print "[$user@$host] $dir $ruby $git\n%% ")
 fi
