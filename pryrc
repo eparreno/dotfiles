@@ -29,6 +29,14 @@ Pry.config.ls.public_method_color = :green
 Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
+# Aliases
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
+
+# Repeat last command when hitting Enter
+pry.input = StringIO.new(Pry.history.to_a.last)
+
 # Prompt
 prompt = "\e[1;30m"
 prompt << "#{RUBY_VERSION}"
