@@ -19,7 +19,7 @@
 [branch]
   autosetupmerge = true
 [push]
-  default = tracking
+  default = current
 [grep]
 	extendRegexp = true
 	lineNumber = true
@@ -28,3 +28,4 @@
   ci = commit
   co = checkout
   br = branch
+  conflicts = diff --name-only --diff-filter=UDX
