@@ -35,7 +35,9 @@ Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
 
 # Repeat last command when hitting Enter
-pry.input = StringIO.new(Pry.history.to_a.last)
+Pry::Commands.command /^$/, "repeat last command" do
+  _pry_.input = StringIO.new(Pry.history.to_a.last)
+end
 
 # Prompt
 prompt = "\e[1;30m"
@@ -61,4 +63,3 @@ class Object
     (self.methods - Object.instance_methods).sort
   end
 end
-
