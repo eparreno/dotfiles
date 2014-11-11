@@ -44,7 +44,6 @@ fi
 if ! tmux has-session -t $name ; then
   tmux start                      \;\
     new-session -d -s $name exit  \;\
-    set default-path $dir         \;\
     set set-remain-on-exit on     \;\
     setenv -t $name PATH $PATH    \;\
     source-file $rc               \;\
