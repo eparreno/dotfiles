@@ -12,6 +12,6 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
     source "$HOME/.rvm/scripts/rvm"
 fi
 
-PATH="$HOME/bin:$PATH"
+PATH="$HOME/.bin:$PATH"
 
 export PATH

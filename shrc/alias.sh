@@ -18,4 +18,4 @@ alias egrep='egrep --color=auto'
 alias t='tmux'
 alias tls='tmux ls'
 alias tat='tmux at'
-
+alias fs='foreman start'
