@@ -58,6 +58,7 @@ elif [[ -n $ZSH_VERSION ]]; then
   local dir='%{$fg[cyan]%}%~%{$reset_color%}'
   local ruby='%{$fg[yellow]%}$(ruby_version)%{$reset_color%}'
   local git='$(git_prompt)%{$reset_color%}'
+  local arrow='%{$fg[green]%}➜%{$reset_color%}'
 
-  PROMPT=$(print "[$user@$host] $dir $ruby $git\n%% ")
+  PROMPT=$(print "[$user@$host] $dir $ruby $git\n$arrow ")
 fi
