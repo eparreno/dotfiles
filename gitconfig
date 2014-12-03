@@ -29,3 +29,4 @@
   co = checkout
   br = branch
   conflicts = diff --name-only --diff-filter=UDX
+	atpc = !sh -c \"git co -q master && git branch --merged | grep -v \\\"\\*\\\" | xargs git branch -d\"
