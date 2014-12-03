@@ -1,5 +1,5 @@
-alias migrate="bundle exec rake db:migrate db:test:prepare"
-alias remigrate="bundle exec rake db:migrate db:migrate:redo db:test:prepare"
+alias migrate="bundle exec rake db:migrate"
+alias remigrate="bundle exec rake db:migrate db:migrate:redo"
 alias rspec="time bundle exec rspec"
 alias bi="bundle install"
 alias bu="bundle update"
