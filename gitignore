@@ -32,7 +32,6 @@ public/uploads/*
 config/database.yml
 db/*.sqlite3
 log/*.log
-reports
 webrat-*
 vendor/ruby/**/*
 vendor/plugins/rails-dev-boost/
