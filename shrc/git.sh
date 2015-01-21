@@ -10,6 +10,7 @@ alias gst="git status -sb"
 alias gms="git checkout master"
 alias gphm="git push heroku master"
 alias gpsm="git push staging master"
+alias gum="git fetch && git reset --hard origin/master"
 
 if [[ -n $BASH ]]; then
   if [[ -s "/usr/local/etc/bash_completion.d/git-completion.bash" ]]; then
