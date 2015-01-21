@@ -2,9 +2,8 @@ unset MAILCHECK
 
 umask 0022
 
-autoload -U compinit
-compinit -i
-autoload colors; colors;
+autoload -U compinit && compinit -i
+autoload -U colors && colors
 
 setopt prompt_subst
 
