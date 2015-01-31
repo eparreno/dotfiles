@@ -14,3 +14,4 @@ done
 if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
+eval "$(rbenv init - zsh --no-rehash)"
