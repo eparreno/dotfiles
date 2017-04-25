@@ -1,8 +1,6 @@
-﻿[merge]
-  tool = vimdiff
-[core]
+﻿[core]
   excludesfile = ~/.gitignore
-  autocrlf = input
+	autocrlf = input
   safecrlf = false
   editor = vim
   quotepath = false
@@ -13,9 +11,9 @@
   ; pretty = "%C(yellow)%h%Creset %Cgreen[%ai]%Creset [%an] %s"
 [user]
   name = Emili Parreno
-  email = emili@eparreno.com
-[github]
-  user = eparreno
+	email = emili@eparreno.com
+; [github]
+;   user = eparreno
 [branch]
   autosetupmerge = true
 [push]

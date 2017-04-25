@@ -1,4 +1,3 @@
-# It's a Rails app?
 begin
   require File.join(Dir.getwd, 'config', 'environment.rb')
 rescue LoadError
@@ -12,6 +11,7 @@ if defined?(Rails) && Rails.env
   else
     require "rails/console/app"
     require 'rails/console/helpers'
+    extend Rails::ConsoleMethods if Rails.version.to_f >= 3.2
   end
 
   # Show SQL info
@@ -30,9 +30,12 @@ Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
 # Aliases
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
+# Pry.commands.alias_command 'c', 'continue'
+# Pry.commands.alias_command 's', 'step'
+# Pry.commands.alias_command 'n', 'next'
+# Pry.commands.alias_command 'f',  'finish'
+# Pry.commands.alias_command 'ss', 'show-source'
+# Pry.config.commands.alias_command 'w', 'whereami'
 
 # Repeat last command when hitting Enter
 Pry::Commands.command /^$/, "repeat last command" do
@@ -40,7 +43,7 @@ Pry::Commands.command /^$/, "repeat last command" do
 end
 
 # Prompt
-prompt = "\e[1;30m"
+prompt = "\033[1m"
 prompt << "#{RUBY_VERSION}"
 
 Pry.prompt = [

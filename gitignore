@@ -8,7 +8,6 @@
 .tmuxrc
 .rbenv-version
 .rbenv-vars
-.ruby-version
 *~
 *.cache
 *.log
@@ -35,3 +34,4 @@ log/*.log
 webrat-*
 vendor/ruby/**/*
 vendor/plugins/rails-dev-boost/
+sandi_meter

@@ -1,6 +1,0 @@
-alias migrate="bin/rake db:migrate && bin/rake db:migrate RAILS_ENV=test"
-alias remigrate="bin/rake db:migrate && bin/rake db:rollback && bin/rake db:migrate"
-alias rspec="time bundle exec rspec"
-alias bi="bundle install"
-alias bu="bundle update"
-alias be="bundle exec"
