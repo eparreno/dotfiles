@@ -18,7 +18,12 @@ export HISTCONTROL=ignoredups
 export EDITOR=vim
 
 PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$HOME/Library/Python/3.6/bin:$PATH"
 export PATH
+
+set timeoutlen=1000 ttimeoutlen=0
 
 # bash_completion for MAC OS X
 if [ -f $(brew --prefix 2> /dev/null)/etc/bash_completion ]; then
@@ -62,13 +67,43 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias du='du -kh'
+alias df='df -kTh'
 alias tlf="tail -f"
 alias grep='grep --color=auto'
-alias gst='git status'
+alias psg='ps aux | grep -v grep | grep'
+
+alias e='vim'
+alias t='tmux'
+alias tls='tmux ls'
+alias tat='tmux at'
+alias fs='foreman start'
+
+alias g="git status -sb"
+alias gd="git diff"
+alias gb="git branch"
 alias gg="git grep --break --heading --line-number"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gaa="git add --all"
+alias gci="git commit -m"
+alias gms="git checkout master"
+alias gphm="git push heroku master"
+alias gpsm="git push staging master"
+alias gum="git co master && git fetch && git reset --hard origin/master"
+alias push='git push'
+
+alias bi="bundle install"
+alias bu="bundle update"
+alias be="bundle exec"
+
+alias dk="docker"
+alias dkc="docker-compose"
+alias dcop='docker-compose run --rm api bundle exec rubocop $1'
+alias dspec='docker-compose run --rm api ./bin/rspec $1'
+alias dcon='docker-compose run --rm api bundle exec rails c'
 
 eval "$(rbenv init - --no-rehash)"
+eval "$(direnv hook bash)"
 
 # release Ctrl-S to be used by Vim
 stty -ixon -ixoff

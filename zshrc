@@ -12,7 +12,7 @@ setopt prompt_subst
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export GREP_COLOR='1;32'
-export EDITOR="vim"
+export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -54,7 +54,7 @@ local ruby='%{$fg[yellow]%}$(ruby_version)%{$reset_color%}'
 local git='$(git_prompt)%{$reset_color%}'
 local arrow='%{$fg[green]%}➜%{$reset_color%}'
 
-PROMPT=$(print "$dir $ruby $git\n\%# ")
+PROMPT=$(print "$dir $ruby $git\n\ %# ")
 
 ### Alias ###
 alias l="ls -lh"
@@ -66,12 +66,15 @@ alias du='du -kh'
 alias df='df -kTh'
 alias tlf="tail -f"
 alias grep='grep --color=auto'
+alias psg='ps aux | grep -v grep | grep'
+
 alias e='vim'
+alias n='nvim'
 alias t='tmux'
 alias tls='tmux ls'
 alias tat='tmux at'
 alias fs='foreman start'
-alias psg='ps aux | grep -v grep | grep'
+
 alias g="git status -sb"
 alias gd="git diff"
 alias gb="git branch"
@@ -85,21 +88,30 @@ alias gphm="git push heroku master"
 alias gpsm="git push staging master"
 alias gum="git co master && git fetch && git reset --hard origin/master"
 alias push='git push'
+
 alias migrate="bin/rake db:migrate && bin/rake db:migrate RAILS_ENV=test"
 alias remigrate="bin/rake db:migrate && bin/rake db:rollback && bin/rake db:migrate"
-# alias rspec="time ./bin/rspec"
 alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
+
 alias reload='source ~/.zshrc'
 alias python='python3'
 
+alias dk="docker"
+alias dkc="docker-compose"
+alias dcop='docker-compose run --rm api bundle exec rubocop $1'
+alias dspec='docker-compose run --rm api ./bin/rspec $1'
+alias dcon='docker-compose run --rm api bundle exec rails c'
+
 PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 export PATH
 
 eval "$(rbenv init - zsh --no-rehash)"
-# eval "$(docker-machine env default)"
+eval "$(direnv hook zsh)"
 
 if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
