@@ -4,7 +4,8 @@ Use at your own risk :)
 
 ## Install
 
-    git clone git://github.com/eparreno/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles
-    rake install
-
+```
+git clone https://github.com/eparreno/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+rake install
+```
