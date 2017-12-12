@@ -16,11 +16,11 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export HISTCONTROL=ignoredups
 export EDITOR=vim
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
-PATH="$HOME/Library/Python/3.6/bin:$PATH"
+# PATH="$HOME/.rbenv/bin:$PATH"
 export PATH
 
 set timeoutlen=1000 ttimeoutlen=0
@@ -59,7 +59,13 @@ git_prompt() {
 }
 
 # http://vvv.tobiassjosten.net/bash/dynamic-prompt-with-git-and-ansi-colors/
-PROMPT_COMMAND='PS1="\u@\h ${cyan}\w ${yellow}$(ruby_version) $(git_prompt)${white}\n% "'
+PROMPT_COMMAND='PS1="[bash] \u@\h ${cyan}\w ${yellow}$(ruby_version) $(git_prompt)${white}\n% "'
+
+# iTerm tab titles
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
 
 alias l="ls -lh"
 alias la="ls -lah"

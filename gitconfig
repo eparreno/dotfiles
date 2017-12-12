@@ -10,7 +10,7 @@
 [format]
   ; pretty = "%C(yellow)%h%Creset %Cgreen[%ai]%Creset [%an] %s"
 [user]
-  name = Emili Parreno
+	name = Emili Parreno
 	email = emili@eparreno.com
 ; [github]
 ;   user = eparreno

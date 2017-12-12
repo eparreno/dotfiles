@@ -12,7 +12,7 @@ setopt prompt_subst
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export GREP_COLOR='1;32'
-export EDITOR="nvim"
+export EDITOR="vim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -47,6 +47,12 @@ git_prompt() {
   echo "$git_color$git_branch "
 }
 
+# iTerm tab titles
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
 local user='%{$fg[white]%}%n%{$reset_color%}'
 local host='%{$fg[white]%}%1m%{$reset_color%}'
 local dir='%{$fg[cyan]%}%~%{$reset_color%}'
@@ -54,7 +60,7 @@ local ruby='%{$fg[yellow]%}$(ruby_version)%{$reset_color%}'
 local git='$(git_prompt)%{$reset_color%}'
 local arrow='%{$fg[green]%}➜%{$reset_color%}'
 
-PROMPT=$(print "$dir $ruby $git\n\ %# ")
+PROMPT=$(print "[zsh] $user@$host $dir $ruby $git\n\ %# ")
 
 ### Alias ###
 alias l="ls -lh"
@@ -96,7 +102,6 @@ alias bu="bundle update"
 alias be="bundle exec"
 
 alias reload='source ~/.zshrc'
-alias python='python3'
 
 alias dk="docker"
 alias dkc="docker-compose"
@@ -106,11 +111,11 @@ alias dcon='docker-compose run --rm api bundle exec rails c'
 
 PATH="$HOME/.bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
-PATH="/usr/local/sbin:$PATH"
+# PATH="$HOME/.rbenv/shims:$PATH"
+# PATH="$HOME/.rbenv/bin:$PATH"
 export PATH
 
-eval "$(rbenv init - zsh --no-rehash)"
+# eval "$(rbenv init - zsh --no-rehash)"
 eval "$(direnv hook zsh)"
 
 if [ -f ~/.zshrc.local ]; then
