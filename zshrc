@@ -75,7 +75,6 @@ alias grep='grep --color=auto'
 alias psg='ps aux | grep -v grep | grep'
 
 alias e='vim'
-alias n='nvim'
 alias t='tmux'
 alias tls='tmux ls'
 alias tat='tmux at'
@@ -93,6 +92,7 @@ alias gms="git checkout master"
 alias gphm="git push heroku master"
 alias gpsm="git push staging master"
 alias gum="git co master && git fetch && git reset --hard origin/master"
+alias gud="git co develop && git fetch && git reset --hard origin/develop"
 alias push='git push'
 
 alias migrate="bin/rake db:migrate && bin/rake db:migrate RAILS_ENV=test"
@@ -105,17 +105,12 @@ alias reload='source ~/.zshrc'
 
 alias dk="docker"
 alias dkc="docker-compose"
-alias dcop='docker-compose run --rm api bundle exec rubocop $1'
-alias dspec='docker-compose run --rm api ./bin/rspec $1'
-alias dcon='docker-compose run --rm api bundle exec rails c'
 
-PATH="$HOME/.bin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
-# PATH="$HOME/.rbenv/shims:$PATH"
-# PATH="$HOME/.rbenv/bin:$PATH"
+PATH="~/.bin:$PATH"
+PATH="~/.local/bin:$PATH"
 export PATH
 
-# eval "$(rbenv init - zsh --no-rehash)"
+eval "$(rbenv init - zsh --no-rehash)"
 eval "$(direnv hook zsh)"
 
 if [ -f ~/.zshrc.local ]; then
