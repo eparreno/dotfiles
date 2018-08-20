@@ -14,7 +14,6 @@ bold='\033[1m'
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export HISTCONTROL=ignoredups
 export EDITOR=vim
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 
