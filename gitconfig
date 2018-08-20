@@ -12,12 +12,16 @@
 [user]
 	name = Emili Parreno
 	email = emili@eparreno.com
-; [github]
-;   user = eparreno
+[github]
+  user = eparreno
 [branch]
   autosetupmerge = true
 [push]
   default = current
+[pull]
+  rebase = preserve
+[rebase]
+  autosquash = true
 [grep]
   extendRegexp = true
   lineNumber = true
@@ -27,4 +31,5 @@
   co = checkout
   br = branch
   conflicts = diff --name-only --diff-filter=UDX
-  atpc = !sh -c \"git co -q master && git branch --merged | grep -v \\\"\\*\\\" | xargs git branch -d\"
+  atpc = !sh -c \"git co -q develop && git branch --merged | grep -v \\\"\\*\\\" | xargs git branch -d\"
+  pf = push --force-with-lease
