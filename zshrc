@@ -83,6 +83,9 @@ alias fs='foreman start'
 alias g="git status -sb"
 alias gd="git diff"
 alias gb="git branch"
+alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:cyan)%(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+# delete all local branches except master and develop
+alias gbld="git for-each-ref --format '%(refname:short)' refs/heads | grep -v 'master\|develop' | xargs git branch -D"
 alias gg="git grep --break --heading --line-number"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -106,13 +109,15 @@ alias reload='source ~/.zshrc'
 alias dk="docker"
 alias dkc="docker-compose"
 
+PATH="$HOME/.rbenv/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
 PATH="~/.bin:$PATH"
-PATH="~/.local/bin:$PATH"
 export PATH
 
-eval "$(rbenv init - zsh --no-rehash)"
+eval "$(rbenv init - zsh)"
 eval "$(direnv hook zsh)"
 
 if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
+export PATH="/usr/local/sbin:$PATH"

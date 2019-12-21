@@ -29,6 +29,11 @@ Pry.config.ls.public_method_color = :green
 Pry.config.ls.protected_method_color = :yellow
 Pry.config.ls.private_method_color = :bright_black
 
+# Better colors when printing an object
+Pry.config.print = proc do |output, value|
+  Pry::ColorPrinter.pp(value, output, 65536)
+end
+
 # Aliases
 # Pry.commands.alias_command 'c', 'continue'
 # Pry.commands.alias_command 's', 'step'

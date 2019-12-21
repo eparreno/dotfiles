@@ -10,8 +10,8 @@
 [format]
   ; pretty = "%C(yellow)%h%Creset %Cgreen[%ai]%Creset [%an] %s"
 [user]
-	name = Emili Parreno
-	email = emili@eparreno.com
+  name = Emili Parreno
+  email = emili@eparreno.com
 [github]
   user = eparreno
 [branch]
@@ -33,3 +33,5 @@
   conflicts = diff --name-only --diff-filter=UDX
   atpc = !sh -c \"git co -q develop && git branch --merged | grep -v \\\"\\*\\\" | xargs git branch -d\"
   pf = push --force-with-lease
+[diff]
+  noprefix = true
