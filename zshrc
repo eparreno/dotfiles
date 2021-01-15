@@ -38,7 +38,7 @@ git_prompt() {
 
   if [[ -n "$git_branch" ]]; then
     if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-      git_color="%{$fg[red]%}"
+      git_color="%{$fg[yellow]%}"
     else
       git_color="%{$fg[green]%}"
     fi
@@ -47,20 +47,19 @@ git_prompt() {
   echo "$git_color$git_branch "
 }
 
-# iTerm tab titles
-precmd() {
-  # sets the tab title to current dir
-  echo -ne "\e]1;${PWD##*/}\a"
-}
-
 local user='%{$fg[white]%}%n%{$reset_color%}'
 local host='%{$fg[white]%}%1m%{$reset_color%}'
 local dir='%{$fg[cyan]%}%~%{$reset_color%}'
-local ruby='%{$fg[yellow]%}$(ruby_version)%{$reset_color%}'
+local ruby='%{$fg[red]%}$(ruby_version)%{$reset_color%}'
 local git='$(git_prompt)%{$reset_color%}'
-local arrow='%{$fg[green]%}➜%{$reset_color%}'
+local prompt='%{$fg[green]%}⮑ %{$reset_color%}'
 
-PROMPT=$(print "[zsh] $user@$host $dir $ruby $git\n\ %# ")
+PROMPT=$(print "\n[zsh] $dir $ruby $git\n $prompt ")
+
+precmd() {
+  # iTerm tab titles. Sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
 
 ### Alias ###
 alias l="ls -lh"
@@ -83,8 +82,9 @@ alias fs='foreman start'
 alias g="git status -sb"
 alias gd="git diff"
 alias gb="git branch"
-alias gbl="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:cyan)%(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
-# delete all local branches except master and develop
+# List local branches in a nice format
+alias gbl="git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:cyan)%(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+# Delete all local branches except master and develop
 alias gbld="git for-each-ref --format '%(refname:short)' refs/heads | grep -v 'master\|develop' | xargs git branch -D"
 alias gg="git grep --break --heading --line-number"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -112,12 +112,13 @@ alias dkc="docker-compose"
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="~/.bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
 export PATH
 
 eval "$(rbenv init - zsh)"
 eval "$(direnv hook zsh)"
 
+# Local configuration
 if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
-export PATH="/usr/local/sbin:$PATH"
