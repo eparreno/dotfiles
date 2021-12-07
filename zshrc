@@ -95,6 +95,7 @@ alias gms="git checkout master"
 alias gphm="git push heroku master"
 alias gpsm="git push staging master"
 alias gum="git co master && git fetch && git reset --hard origin/master"
+alias gumain="git co main && git fetch && git reset --hard origin/main"
 alias gud="git co develop && git fetch && git reset --hard origin/develop"
 alias push='git push'
 
@@ -107,8 +108,11 @@ alias be="bundle exec"
 alias reload='source ~/.zshrc'
 
 alias dk="docker"
-alias dkc="docker-compose"
+alias dkc="docker compose"
 
+# LTE Environment
+alias lte-proxy="~/stuart/load-test/infra/tooling/lte-proxy.sh"
+#
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="~/.bin:$PATH"
@@ -122,3 +126,4 @@ eval "$(direnv hook zsh)"
 if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
