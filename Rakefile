@@ -6,6 +6,8 @@ task :install do
   dotfiles = Dir.glob('*')
   dotfiles.delete("README.md")
   dotfiles.delete("Rakefile")
+  dotfiles.delete("iterm")
+  dotfiles.delete("fonts")
 
   overwrite_all = false
   backup_all = false
