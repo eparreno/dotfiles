@@ -61,6 +61,10 @@ precmd() {
   echo -ne "\e]1;${PWD##*/}\a"
 }
 
+function cs() {
+  cd "$@" && ls -lh
+}
+
 ### Alias ###
 alias l="ls -lh"
 alias la="ls -lah"
@@ -77,7 +81,6 @@ alias e='vim'
 alias t='tmux'
 alias tls='tmux ls'
 alias tat='tmux at'
-alias fs='foreman start'
 
 alias g="git status -sb"
 alias gd="git diff"
@@ -92,12 +95,10 @@ alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 alias gaa="git add --all"
 alias gci="git commit -m"
 alias gms="git checkout master"
-alias gphm="git push heroku master"
-alias gpsm="git push staging master"
 alias gum="git co master && git fetch && git reset --hard origin/master"
 alias gumain="git co main && git fetch && git reset --hard origin/main"
-alias gud="git co develop && git fetch && git reset --hard origin/develop"
-alias push='git push'
+alias gpush='git push'
+alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 
 alias migrate="bin/rake db:migrate && bin/rake db:migrate RAILS_ENV=test"
 alias remigrate="bin/rake db:migrate && bin/rake db:rollback && bin/rake db:migrate"
@@ -105,12 +106,11 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 
-alias reload='source ~/.zshrc'
-
 alias dk="docker"
 alias dkc="docker compose"
 
-#
+alias reload='source ~/.zshrc'
+
 PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="~/.bin:$PATH"
