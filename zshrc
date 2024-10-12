@@ -54,7 +54,7 @@ local ruby='%{$fg[red]%}$(ruby_version)%{$reset_color%}'
 local git='$(git_prompt)%{$reset_color%}'
 local prompt='%{$fg[green]%}⮑ %{$reset_color%}'
 
-PROMPT=$(print "\n[zsh] $dir $ruby $git\n $prompt ")
+PROMPT=$(print "\n[zsh] $dir $git\n $prompt ")
 
 precmd() {
   # iTerm tab titles. Sets the tab title to current dir
@@ -111,11 +111,14 @@ alias dkc="docker compose"
 
 alias reload='source ~/.zshrc'
 
-PATH="$HOME/.rbenv/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
-PATH="~/.bin:$PATH"
+PATH="$HOME/.bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
+PATH="/Library/TeX/texbin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 export PATH
 
 eval "$(rbenv init - zsh)"
