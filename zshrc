@@ -78,6 +78,7 @@ alias grep='grep --color=auto'
 alias psg='ps aux | grep -v grep | grep'
 
 alias e='vim'
+alias nv='nvim'
 alias t='tmux'
 alias tls='tmux ls'
 alias tat='tmux at'
@@ -108,6 +109,8 @@ alias be="bundle exec"
 
 alias dk="docker"
 alias dkc="docker compose"
+
+alias pm="python manage.py"
 
 alias reload='source ~/.zshrc'
 
