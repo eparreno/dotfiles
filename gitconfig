@@ -19,7 +19,7 @@
 [push]
   default = current
 [pull]
-  rebase = preserve
+	rebase = true
 [rebase]
   autosquash = true
 [grep]
@@ -35,3 +35,12 @@
   pf = push --force-with-lease
 [diff]
   noprefix = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
