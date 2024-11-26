@@ -2,7 +2,6 @@
 
 exists() {
   command -v $1 >/dev/null 2>&1
-  # command -v $1 2>/dev/null
 }
 
 echo "Emptying Trash..."
@@ -14,9 +13,9 @@ if exists 'brew' ; then
 fi
 
 if exists 'foo' ; then
+  # ToDo
   # Delete logs in /private/var/log/
   # only the ones that are rotated *.digit.* (recursively)
-  echo ""
 fi
 
 # echo "Removing tmp files..."

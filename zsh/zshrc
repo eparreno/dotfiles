@@ -12,23 +12,23 @@ setopt prompt_subst
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export GREP_COLOR='1;32'
-export EDITOR="vim"
+export EDITOR="nvim"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 bindkey -e
 
-# No flow control. Let me use Ctrl+s in Vim
+# No flow control
 stty -ixon -ixoff 2>/dev/null
 
-# Resume vim using ctrl+z instead of fg
-foreground-vi() {
-  fg %vi
+# Resume nvim using ctrl+z instead of fg
+foreground-vim() {
+  fg %nvim # replace with your editor of choice
 }
-zle -N foreground-vi
-bindkey '^Z' foreground-vi
+zle -N foreground-vim
+bindkey '^Z' foreground-vim
 
-### Prompt ###
+### PROMPT
 ruby_version() {
   echo -n "$(ruby -e 'print RUBY_VERSION')"
 }
@@ -38,13 +38,12 @@ git_prompt() {
 
   if [[ -n "$git_branch" ]]; then
     if [[ -n $(git status --porcelain 2> /dev/null) ]]; then
-      git_color="%{$fg[yellow]%}"
+      p="%{$fg[yellow]%}$git_branch \U2731%{$reset_color%}"
     else
-      git_color="%{$fg[green]%}"
+      p="%{$fg[green]%}$git_branch \U2714%{$reset_color%}"
     fi
+    echo "[$p]"
   fi
-
-  echo "$git_color$git_branch "
 }
 
 local user='%{$fg[white]%}%n%{$reset_color%}'
@@ -52,20 +51,21 @@ local host='%{$fg[white]%}%1m%{$reset_color%}'
 local dir='%{$fg[cyan]%}%~%{$reset_color%}'
 local ruby='%{$fg[red]%}$(ruby_version)%{$reset_color%}'
 local git='$(git_prompt)%{$reset_color%}'
-local prompt='%{$fg[green]%}⮑ %{$reset_color%}'
+local prompt='%{$fg[green]%}\U276F %{$reset_color%}'
 
-PROMPT=$(print "\n[zsh] $dir $git\n $prompt ")
+PROMPT=$(print "\n$dir $git\n$prompt")
 
 precmd() {
   # iTerm tab titles. Sets the tab title to current dir
-  echo -ne "\e]1;${PWD##*/}\a"
+#  echo -ne "\e]1;${PWD##*/}\a"
 }
 
-function cs() {
+# Change dir and list
+function cl() {
   cd "$@" && ls -lh
 }
 
-### Alias ###
+### ALIAS
 alias l="ls -lh"
 alias la="ls -lah"
 alias rm='rm -i'
@@ -77,58 +77,84 @@ alias tlf="tail -f"
 alias grep='grep --color=auto'
 alias psg='ps aux | grep -v grep | grep'
 
-alias e='vim'
+alias e='nvim'
 alias nv='nvim'
+
+# Tmux
 alias t='tmux'
 alias tls='tmux ls'
 alias tat='tmux at'
+alias tka='tmux kill-session -a'
+alias tns='tmux new -s'
 
+# Git
 alias g="git status -sb"
 alias gd="git diff"
-alias gb="git branch"
-# List local branches in a nice format
-alias gbl="git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:cyan)%(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
-# Delete all local branches except master and develop
-alias gbld="git for-each-ref --format '%(refname:short)' refs/heads | grep -v 'master\|develop' | xargs git branch -D"
-alias gg="git grep --break --heading --line-number"
-alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gbb="git branch"
+alias push='git push'
 alias gaa="git add --all"
 alias gci="git commit -m"
-alias gms="git checkout master"
+alias gcm="git checkout master"
 alias gum="git co master && git fetch && git reset --hard origin/master"
 alias gumain="git co main && git fetch && git reset --hard origin/main"
-alias gpush='git push'
-alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 
+# List local branches in a nice format
+alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(color:cyan)%(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+# Delete all local branches except main, master and develop
+alias gbld="git for-each-ref --format '%(refname:short)' refs/heads | grep -v 'main\|master\|develop' | xargs git branch -D"
+# Nice git grep
+alias gg="git grep --break --heading --line-number"
+# Nice git log
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# Nice git log with graph
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# Ruby on Rails
 alias migrate="bin/rake db:migrate && bin/rake db:migrate RAILS_ENV=test"
 alias remigrate="bin/rake db:migrate && bin/rake db:rollback && bin/rake db:migrate"
 alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 
+# Docker
 alias dk="docker"
 alias dkc="docker compose"
 
+# Python
 alias pm="python manage.py"
 
+# Reload ZSH config
 alias reload='source ~/.zshrc'
 
-PATH="/usr/local/bin:$PATH"
+### PATH
 PATH="$HOME/.bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
-PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 PATH="/opt/homebrew/bin:$PATH"
+PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 PATH="/Library/TeX/texbin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
 export PATH
 
-eval "$(rbenv init - zsh)"
-eval "$(direnv hook zsh)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+### EVAL section
+if command -v rbenv &>/dev/null; then
+  eval "$(rbenv init - zsh)"
+fi
 
-# Local configuration
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+if command -v brew &>/dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if command -v "fzf" &>/dev/null; then
+  source <(fzf --zsh)
+fi
+
+### Local configuration
 if [ -f ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
